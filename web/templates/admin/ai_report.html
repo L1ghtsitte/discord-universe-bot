@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🧠 AI Аналитический отчёт</h2>
+        <button class="btn btn-primary" onclick="location.reload()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+            </svg>
+            Обновить отчёт
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <pre style="white-space: pre-wrap; font-family: 'Courier New', monospace; background: #2d2d2d; padding: 20px; border-radius: 5px; color: #f8f8f8;">{{ report }}</pre>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h4>Рекомендации AI:</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Увеличить награды за ежедневные квесты на 15%</li>
+            <li class="list-group-item">Добавить новый тип фермы — "Энергетическая"</li>
+            <li class="list-group-item">Снизить налог на продажи до 3% для стимулирования торговли</li>
+            <li class="list-group-item">Запустить ивент "Космическая лихорадка" с 5 по 12 июня</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Сервер: {{ guild.name }}</h1>
+    <div class="btn-group">
+        <a href="{{ url_for('economy_dashboard', guild_id=guild_id) }}" class="btn btn-success">Экономика</a>
+        <a href="{{ url_for('clans_manager', guild_id=guild_id) }}" class="btn btn-info">Кланы</a>
+        <a href="{{ url_for('server_settings', guild_id=guild_id) }}" class="btn btn-warning">Настройки</a>
+        <a href="{{ url_for('ai_report', guild_id=guild_id) }}" class="btn btn-primary">AI Отчёт</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">Статистика сервера</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h3>1,247</h3>
+                                <p class="text-muted">Пользователей</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h3>42</h3>
+                                <p class="text-muted">Кланов</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <h3>89%</h3>
+                                <p class="text-muted">Активность</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Быстрые действия</div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-outline-primary">Создать конкурс</a>
+                    <a href="#" class="btn btn-outline-success">Выдать награду</a>
+                    <a href="#" class="btn btn-outline-warning">Забанить пользователя</a>
+                    <a href="#" class="btn btn-outline-info">Настроить автомод</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Последние действия</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Пользователь @JohnDoe купил роль "VIP" за 5000 🪙</li>
+                <li class="list-group-item">Клан "Космические Волки" объявил войну клану "Империя Звёзд"</li>
+                <li class="list-group-item">Пользователь @JaneSmith достиг 50 уровня</li>
+                <li class="list-group-item">Создан новый ивент "Лунное вторжение"</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

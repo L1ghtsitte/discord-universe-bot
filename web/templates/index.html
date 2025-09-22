@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <img src="https://via.placeholder.com/200x200/6c5ce7/ffffff?text=DU" class="rounded-circle mb-4" alt="Discord Universe">
+        <h1 class="display-4">Discord Universe Admin</h1>
+        <p class="lead">Панель управления вашим сервером нового поколения</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-5">Войти через Discord</a>
+        <div class="mt-4">
+            <small class="text-muted">Требуются права администратора на сервере</small>
+        </div>
+    </div>
+</div>
+{% endblock %}

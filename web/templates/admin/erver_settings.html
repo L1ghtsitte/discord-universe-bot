@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>⚙️ Настройки сервера</h2>
+    <form method="POST" action="{{ url_for('update_settings', guild_id=guild_id) }}">
+        <div class="card mb-4">
+            <div class="card-header">Настройки уровней</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">XP за сообщение:</label>
+                    <input type="number" name="xp_per_message" class="form-control" value="{{ settings.xp_per_message }}" min="1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">XP за минуту в голосе:</label>
+                    <input type="number" name="xp_per_minute" class="form-control" value="{{ settings.xp_per_minute }}" min="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">Авто-модерация</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Статус:</label>
+                    <select name="automod_enabled" class="form-control">
+                        <option value="1" {% if settings.automod_enabled %}selected{% endif %}>Включена</option>
+                        <option value="0" {% if not settings.automod_enabled %}selected{% endif %}>Выключена</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить настройки</button>
+    </form>
+</div>
+{% endblock %}

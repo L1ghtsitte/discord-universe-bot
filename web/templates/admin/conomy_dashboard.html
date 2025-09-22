@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📈 Экономика сервера</h2>
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5>Казна сервера</h5>
+                    <h3>{{ economy.treasury|default(0) }} 🪙</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5>Налог</h5>
+                    <h3>{{ economy.tax_rate|default(0.05)*100 }}%</h3>
+                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#editTaxModal">Изменить</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h5>Инфляция</h5>
+                    <h3>{{ economy.inflation_rate|default(0)% }}%</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5>Активных игроков</h5>
+                    <h3>1,247</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>🏆 Топ заработчиков</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Игрок</th>
+                        <th>Баланс</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in top_earners %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.user_id }}</td>
+                        <td>{{ user.balance }} 🪙</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>🛒 Активные лоты на рынке</h3>
+            <div class="list-group">
+            {% for listing in listings %}
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Предмет #{{ listing.item_id }} x{{ listing.quantity }}</strong><br>
+                        <small class="text-muted">Продавец: {{ listing.seller_id }}</small>
+                    </div>
+                    <div class="text-end">
+                        <div>{{ listing.price_coins }} 🪙</div>
+                        {% if listing.price_crystals %}
+                            <div>{{ listing.price_crystals }} 💎</div>
+                        {% endif %}
+                        <button class="btn btn-sm btn-outline-danger mt-1">Удалить</button>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для изменения налога -->
+<div class="modal fade" id="editTaxModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{{ url_for('update_tax', guild_id=guild_id) }}">
+                <div class="modal-header">
+                    <h5 class="modal-title">Изменить налоговую ставку</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Налоговая ставка (0.0 - 1.0):</label>
+                        <input type="number" name="tax_rate" class="form-control" value="{{ economy.tax_rate|default(0.05) }}" step="0.01" min="0" max="1" required>
+                        <div class="form-text">Текущая ставка: {{ economy.tax_rate|default(0.05)*100 }}%</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

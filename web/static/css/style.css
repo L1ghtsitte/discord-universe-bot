@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+}
+
+.sidebar .nav-link {
+    color: #495057;
+    font-weight: 500;
+}
+
+.sidebar .nav-link:hover {
+    color: #0d6efd;
+    background-color: #e9ecef;
+}
+
+.sidebar .nav-link.active {
+    color: #0d6efd;
+    background-color: #e7f1ff;
+    border-right: 3px solid #0d6efd;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: none;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #6c5ce7;
+    border-color: #6c5ce7;
+}
+
+.btn-primary:hover {
+    background-color: #5649c0;
+    border-color: #5649c0;
+}
+
+.btn-success {
+    background-color: #00b894;
+    border-color: #00b894;
+}
+
+.btn-success:hover {
+    background-color: #00967d;
+    border-color: #00967d;
+}
+
+.btn-info {
+    background-color: #0984e3;
+    border-color: #0984e3;
+}
+
+.btn-info:hover {
+    background-color: #0767b0;
+    border-color: #0767b0;
+}
+
+.btn-warning {
+    background-color: #fdcb6e;
+    border-color: #fdcb6e;
+    color: #2d3436;
+}
+
+.btn-warning:hover {
+    background-color: #fab149;
+    border-color: #fab149;
+    color: #2d3436;
+}
+
+.list-group-item {
+    border-color: #e9ecef;
+}
+
+pre {
+    background-color: #2d2d2d !important;
+    color: #f8f8f8 !important;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.form-control-color {
+    height: 40px;
+    width: 60px;
+    padding: 5px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .sidebar-sticky {
+        height: auto;
+        padding-top: 0;
+    }
+
+    main {
+        padding: 15px !important;
+    }
+}

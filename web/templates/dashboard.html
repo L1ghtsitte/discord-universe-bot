@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Панель управления</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="#" class="btn btn-sm btn-outline-secondary">Обновить</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h4>Ваши сервера</h4>
+        <div class="row">
+        {% for guild in guilds %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        {{ guild.name }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">ID: {{ guild.id }}</p>
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('guild_panel', guild_id=guild.id) }}" class="btn btn-primary">Управление</a>
+                            <a href="{{ url_for('economy_dashboard', guild_id=guild.id) }}" class="btn btn-success">Экономика</a>
+                            <a href="{{ url_for('clans_manager', guild_id=guild.id) }}" class="btn btn-info">Кланы</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Быстрые действия</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-primary w-100 mb-2">Создать ивент</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-success w-100 mb-2">Выдать валюту</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-warning w-100 mb-2">Модерация</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-outline-info w-100 mb-2">Настройки бота</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>🏰 Управление кланами</h2>
+    <div class="mb-3">
+        <a href="#" class="btn btn-success">Создать клан</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Лидер</th>
+                <th>Участников</th>
+                <th>Казна</th>
+                <th>Уровень</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clan in clans %}
+            <tr>
+                <td>{{ clan.id }}</td>
+                <td>{{ clan.name }}</td>
+                <td>{{ clan.leader_id }}</td>
+                <td>
+                    {% set member_count = namespace(value=0) %}
+                    {% for member in clan.clan_members %}
+                        {% set member_count.value = member_count.value + 1 %}
+                    {% endfor %}
+                    {{ member_count.value }}
+                </td>
+                <td>{{ clan.balance }} 🪙</td>
+                <td>{{ clan.level }}</td>
+                <td>
+                    <button class="btn btn-sm btn-info" onclick="viewClan({{ clan.id }})">Просмотр</button>
+                    <button class="btn btn-sm btn-warning" onclick="editClan({{ clan.id }})">Редактировать</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteClan({{ clan.id }})">Удалить</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+function viewClan(clanId) {
+    alert('Просмотр клана ID: ' + clanId);
+}
+function editClan(clanId) {
+    alert('Редактирование клана ID: ' + clanId);
+}
+function deleteClan(clanId) {
+    if (confirm('Удалить клан? Это действие необратимо!')) {
+        alert('Клан ID ' + clanId + ' удалён');
+    }
+}
+</script>
+{% endblock %}

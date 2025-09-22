@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>🎨 Редактор карточек пользователей</h2>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">Фон карточки</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Цвет фона:</label>
+                        <input type="color" id="bgColor" value="#1e1e1e" class="form-control form-control-color">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Загрузить фоновое изображение:</label>
+                        <input type="file" class="form-control" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">Шрифты</div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Основной шрифт:</label>
+                        <select class="form-select">
+                            <option>Arial</option>
+                            <option selected>Roboto</option>
+                            <option>Montserrat</option>
+                            <option>Open Sans</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Размер шрифта (заголовки):</label>
+                        <input type="range" class="form-range" min="24" max="48" value="36" id="fontSizeHeader">
+                        <div class="text-center" id="fontSizeHeaderValue">36px</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">Элементы карточки</div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="showAvatar" checked>
+                        <label class="form-check-label" for="showAvatar">Показывать аватар</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="showClan" checked>
+                        <label class="form-check-label" for="showClan">Показывать клан</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="showBadges" checked>
+                        <label class="form-check-label" for="showBadges">Показывать бейджи</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="showBorder" checked>
+                        <label class="form-check-label" for="showBorder">Показывать рамку</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Предпросмотр</div>
+                <div class="card-body text-center">
+                    <img src="https://via.placeholder.com/800x400/2d2d2d/ffffff?text=Пример+карточки+пользователя" class="img-fluid rounded" alt="Пример карточки">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <button class="btn btn-success btn-lg">💾 Сохранить шаблон</button>
+        <button class="btn btn-outline-secondary btn-lg ms-2">🔄 Сбросить настройки</button>
+    </div>
+</div>
+
+<script>
+document.getElementById('fontSizeHeader').addEventListener('input', function() {
+    document.getElementById('fontSizeHeaderValue').textContent = this.value + 'px';
+});
+</script>
+{% endblock %}
